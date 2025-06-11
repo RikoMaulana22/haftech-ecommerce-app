@@ -9,9 +9,8 @@ import ProductGridWithSlidel from '@/components/common/ProdukBaner';
 
 
 export default async function HomePage() {
-  const products = await prisma.product.findMany({
-    orderBy: { createdAt: 'desc' },
-  });
+  const products = await prisma.product.findMany();
+  
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat('id-ID', {

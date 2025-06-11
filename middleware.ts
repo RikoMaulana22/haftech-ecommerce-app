@@ -1,24 +1,11 @@
-import { getToken } from "next-auth/jwt"
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
+import { withAuth } from 'next-auth/middleware'
 
-const secret = process.env.NEXTAUTH_SECRET
-
-export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret })
-
-  // Cek kalau request ke halaman admin
-  if (req.nextUrl.pathname.startsWith("/admin")) {
-    // Kalau tidak ada token atau bukan admin, redirect ke login
-    if (!token || token.role !== "ADMIN") {
-      const loginUrl = new URL("/login", req.url)
-      return NextResponse.redirect(loginUrl)
-    }
-  }
-
-  return NextResponse.next()
-}
+export default withAuth({
+  pages: {
+    signIn: '/login',
+  },
+})
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ['/admin/:path*'],
 }

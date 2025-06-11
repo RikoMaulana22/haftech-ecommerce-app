@@ -18,7 +18,8 @@ export async function POST(req: Request) {
       description,
       price: Number(price),
       image,
-      userId, // harus string, sesuai schema
+      userId, 
+     
     },
   });
 

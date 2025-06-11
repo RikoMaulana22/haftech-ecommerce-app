@@ -76,7 +76,7 @@ export default function NewProductPage() {
         className="border w-full p-2"
       />
 
-      <select
+      {/* <select
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
         className="border w-full p-2"
@@ -88,7 +88,7 @@ export default function NewProductPage() {
             {cat.name}
           </option>
         ))}
-      </select>
+      </select> */}
 
       <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
         Simpan

@@ -5,9 +5,7 @@ import Footer from '@/components/common/Footer';
 
 
 export default async function ProdukPage() {
-  const products = await prisma.product.findMany({
-    orderBy: { createdAt: 'desc' },
-  })
+  const products = await prisma.product.findMany();
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat('id-ID', {
